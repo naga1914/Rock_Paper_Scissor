@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 50px;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        form {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 1rem;
+            background-color: #ffffff;
+            border: 2px solid #555;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        h2, h3 {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .result-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock Paper Scissors Game</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="choice" value="rock"><i class="fas fa-hand-rock"></i> Rock</button>
+        <button type="submit" name="choice" value="paper"><i class="fas fa-hand-paper"></i> Paper</button>
+        <button type="submit" name="choice" value="scissors"><i class="fas fa-hand-scissors"></i> Scissors</button>
+    </form>
+
+    {% if result %}
+    <div class="result-box">
+        <h3>Your choice: {{ user_choice }}</h3>
+        <h3>Computer's choice: {{ computer_choice }}</h3>
+        <h2>Result: <strong>{{ result }}</strong></h2>
+    </div>
+    {% endif %}
+</body>
+</html>
